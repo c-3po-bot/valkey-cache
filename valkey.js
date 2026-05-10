@@ -71,7 +71,7 @@ async function ping(){
     log.error(e)
   }
 }
-export default {
+module.exports = {
   del, get, set,
-  status: () => ( client_status )
+  status: () => ( client_ready )
 }

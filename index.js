@@ -1,7 +1,5 @@
 const log = require('./logger')
 const valkey = require('./valkey')
-let logLevel = process.env.LOG_LEVEL || log.Level.INFO;
-log.setLevel(logLevel);
 
 process.on('unhandledRejection', (error) => {
   console.error(`[valkey-cache] [unhandledRejection] ${error}`)
@@ -28,7 +26,7 @@ module.exports.ValkeyCache = class{
   async getJSON(key){
     try{
       if(!key) return
-      let res = return await valkey.get(`${this.KEY_PREFIX}:${key}`)
+      let res = await valkey.get(`${this.KEY_PREFIX}:${key}`)
       if(res) return JSON.parse(res)
     }catch(e){
       log.error(e, this.CACHE_NAME || this.KEY_PREFIX)
