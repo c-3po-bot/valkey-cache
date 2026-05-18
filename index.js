@@ -55,4 +55,7 @@ module.exports.ValkeyCache = class{
       log.error(e, this.CACHE_NAME || this.KEY_PREFIX)
     }
   }
+  status(){
+    return valkey.status()
+  }
 }
